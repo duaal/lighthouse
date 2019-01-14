@@ -52,13 +52,13 @@ class LanternMaxPotentialFID extends LanternMetricArtifact {
       ? extras.fcpResult.pessimisticEstimate.timeInMs
       : extras.fcpResult.optimisticEstimate.timeInMs;
 
-    const events = LanternMaxPotentialFID.getEventsAfterFCP(
+    const timings = LanternMaxPotentialFID.getTimingsAfterFCP(
       simulation.nodeTimings,
       fcpTimeInMs
     );
 
     return {
-      timeInMs: Math.max(...events.map(evt => evt.duration), 16),
+      timeInMs: Math.max(...timings.map(timing => timing.duration), 16),
       nodeTimings: simulation.nodeTimings,
     };
   }
@@ -76,22 +76,12 @@ class LanternMaxPotentialFID extends LanternMetricArtifact {
   /**
    * @param {LH.Gatherer.Simulation.Result['nodeTimings']} nodeTimings
    * @param {number} fcpTimeInMs
+   * @return {Array<{duration: number}>}
    */
-  static getEventsAfterFCP(nodeTimings, fcpTimeInMs) {
-    /** @type {Array<{start: number, end: number, duration: number}>} */
-    const events = [];
-    for (const [node, timing] of nodeTimings.entries()) {
-      if (node.type !== BaseNode.TYPES.CPU) continue;
-      if (timing.endTime < fcpTimeInMs) continue;
-
-      events.push({
-        start: timing.startTime,
-        end: timing.endTime,
-        duration: timing.duration,
-      });
-    }
-
-    return events;
+  static getTimingsAfterFCP(nodeTimings, fcpTimeInMs) {
+    return Array.from(nodeTimings.entries())
+      .filter(([node, timing]) => node.type === BaseNode.TYPES.CPU && timing.endTime > fcpTimeInMs)
+      .map(([_, timing]) => timing);
   }
 }
 
