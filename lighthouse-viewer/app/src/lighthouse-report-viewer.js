@@ -136,6 +136,10 @@ class LighthouseReportViewer {
    * @private
    */
   _replaceReportHtml(json) {
+    // Allow users to view the runnerResult
+    if (json.lhr) {
+      json = json.lhr;
+    }
     this._validateReportJson(json);
 
     if (json.lighthouseVersion.startsWith('2')) {
