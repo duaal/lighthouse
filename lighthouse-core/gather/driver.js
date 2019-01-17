@@ -1241,7 +1241,6 @@ class Driver {
    * @return {Promise<void>}
    */
   async beginEmulation(settings) {
-    // TODO: https://github.com/GoogleChrome/lighthouse/issues/7044
     if (!settings.disableDeviceEmulation) {
       if (settings.emulatedFormFactor === 'mobile') {
         await emulation.enableNexus5X(this);
