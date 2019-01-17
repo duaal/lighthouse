@@ -419,6 +419,32 @@
             "scoreDisplayMode": "binary", 
             "title": "Uses deprecated APIs"
         }, 
+        "diagnostics": {
+            "description": "Collection of useful page vitals.", 
+            "details": {
+                "items": [
+                    {
+                        "maxRtt": 1.7249999999999943, 
+                        "maxServerLatency": 572.829, 
+                        "numFonts": 0.0, 
+                        "numRequests": 18.0, 
+                        "numScripts": 4.0, 
+                        "numStylesheets": 7.0, 
+                        "numTasks": 107.0, 
+                        "numTasksOver10ms": 7.0, 
+                        "numTasksOver25ms": 5.0, 
+                        "rtt": 0.8639999999999999, 
+                        "throughput": 1398339.461891128, 
+                        "totalByteWeight": 160738.0, 
+                        "totalTaskTime": 1548.5690000000002
+                    }
+                ]
+            }, 
+            "id": "diagnostics", 
+            "score": null, 
+            "scoreDisplayMode": "informative", 
+            "title": "Diagnostics"
+        }, 
         "dlitem": {
             "description": "Definition list items (`<dt>` and `<dd>`) must be wrapped in a parent `<dl>` element to ensure that screen readers can properly announce them. [Learn more](https://dequeuniversity.com/rules/axe/3.1/dlitem?application=lighthouse).", 
             "id": "dlitem", 
@@ -3434,6 +3460,10 @@
                     "weight": 0.0
                 }, 
                 {
+                    "id": "diagnostics", 
+                    "weight": 0.0
+                }, 
+                {
                     "id": "metrics", 
                     "weight": 0.0
                 }, 
@@ -4074,6 +4104,12 @@
                 "duration": 100.0, 
                 "entryType": "measure", 
                 "name": "lh:audit:font-display", 
+                "startTime": 0.0
+            }, 
+            {
+                "duration": 100.0, 
+                "entryType": "measure", 
+                "name": "lh:audit:diagnostics", 
                 "startTime": 0.0
             }, 
             {

@@ -787,6 +787,33 @@
         "items": []
       }
     },
+    "diagnostics": {
+      "id": "diagnostics",
+      "title": "Diagnostics",
+      "description": "Collection of useful page vitals.",
+      "score": null,
+      "scoreDisplayMode": "informative",
+      "rawValue": 1,
+      "details": {
+        "items": [
+          {
+            "numRequests": 18,
+            "numScripts": 4,
+            "numStylesheets": 7,
+            "numFonts": 0,
+            "numTasks": 107,
+            "numTasksOver10ms": 7,
+            "numTasksOver25ms": 5,
+            "rtt": 0.8639999999999999,
+            "throughput": 1398339.461891128,
+            "maxRtt": 1.7249999999999943,
+            "maxServerLatency": 572.829,
+            "totalByteWeight": 160738,
+            "totalTaskTime": 1548.5690000000002
+          }
+        ]
+      }
+    },
     "network-requests": {
       "id": "network-requests",
       "title": "Network Requests",
@@ -3320,6 +3347,10 @@
           "weight": 0
         },
         {
+          "id": "diagnostics",
+          "weight": 0
+        },
+        {
           "id": "metrics",
           "weight": 0
         },
@@ -4216,6 +4247,12 @@
       {
         "startTime": 0,
         "name": "lh:audit:font-display",
+        "duration": 100,
+        "entryType": "measure"
+      },
+      {
+        "startTime": 0,
+        "name": "lh:audit:diagnostics",
         "duration": 100,
         "entryType": "measure"
       },
