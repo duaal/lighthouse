@@ -100,6 +100,15 @@ Object {
       "path": "network-requests",
     },
     Object {
+      "path": "network-rtt",
+    },
+    Object {
+      "path": "network-server-latency",
+    },
+    Object {
+      "path": "main-thread-tasks",
+    },
+    Object {
       "path": "metrics",
     },
     Object {
@@ -773,6 +782,20 @@ Object {
         },
         Object {
           "id": "network-requests",
+          "weight": 0,
+        },
+        Object {
+          "group": "diagnostics",
+          "id": "network-rtt",
+          "weight": 0,
+        },
+        Object {
+          "group": "diagnostics",
+          "id": "network-server-latency",
+          "weight": 0,
+        },
+        Object {
+          "id": "main-thread-tasks",
           "weight": 0,
         },
         Object {
