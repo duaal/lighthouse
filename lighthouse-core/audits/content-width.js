@@ -34,7 +34,7 @@ class ContentWidth extends Audit {
     const windowWidth = artifacts.ViewportDimensions.outerWidth;
     const widthsMatch = viewportWidth === windowWidth;
 
-    // TODO(phulce): refactor this `isMobile` boolean to be on context
+    // TODO: https://github.com/GoogleChrome/lighthouse/issues/7043
     const isMobileHost = userAgent.includes('Android') || userAgent.includes('Mobile');
     const isMobile = context.settings.emulatedFormFactor === 'mobile' ||
       (context.settings.emulatedFormFactor !== 'desktop' && isMobileHost);

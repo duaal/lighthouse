@@ -103,14 +103,13 @@ class RenderBlockingResources extends Audit {
     for (const resource of artifacts.TagsBlockingFirstPaint) {
       // Ignore any resources that finished after observed FCP (they're clearly not render-blocking)
       if (resource.endTime * 1000 > fcpTsInMs) continue;
-      // TODO(phulce): beacon these occurences to Sentry to improve FCP graph
+      // TODO: https://github.com/GoogleChrome/lighthouse/issues/7041
       if (!nodesByUrl[resource.tag.url]) continue;
 
       const {node, nodeTiming} = nodesByUrl[resource.tag.url];
 
       // Mark this node and all its dependents as deferrable
-      // TODO(phulce): make this slightly more surgical
-      // i.e. the referenced font asset won't become inlined just because you inline the CSS
+      // TODO: https://github.com/GoogleChrome/lighthouse/issues/7040
       node.traverse(node => deferredNodeIds.add(node.id));
 
       // "wastedMs" is the download time of the network request, responseReceived - requestSent
@@ -190,7 +189,7 @@ class RenderBlockingResources extends Audit {
   static async computeWastedCSSBytes(artifacts, context) {
     const wastedBytesByUrl = new Map();
     try {
-      // TODO(phulce): pull this out into computed artifact
+      // TODO: https://github.com/GoogleChrome/lighthouse/issues/7042
       const results = await UnusedCSS.audit(artifacts, context);
       // @ts-ignore - TODO(bckenny): details types.
       for (const item of results.details.items) {

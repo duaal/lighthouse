@@ -106,7 +106,7 @@ class Simulator {
     this._cachedNodeListByStartTime = [];
     // NOTE: We don't actually need *all* of these sets, but the clarity that each node progresses
     // through the system is quite nice.
-    // TODO(phulce): consider refactoring this so that it's easier to follow
+    // TODO: https://github.com/GoogleChrome/lighthouse/issues/7048
     for (const state of Object.values(NodeState)) {
       this._nodes[state] = new Set();
     }
