@@ -51,7 +51,8 @@ class NetworkRTT extends Audit {
     for (const [origin, additionalRtt] of analysis.additionalRttByOrigin.entries()) {
       // TODO: https://github.com/GoogleChrome/lighthouse/issues/7041
       if (!Number.isFinite(additionalRtt)) continue;
-      if (origin.startsWith('__')) continue;
+      // Ignore entries that don't look like real origins, like the __SUMMARY__ entry.
+      if (!origin.startsWith('http')) continue;
 
       const rtt = additionalRtt + baseRtt;
       results.push({origin, rtt});

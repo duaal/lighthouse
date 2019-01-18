@@ -52,6 +52,7 @@ class Diagnostics extends Audit {
       numTasks: toplevelTasks.length,
       numTasksOver10ms: toplevelTasks.filter(t => t.duration > 10).length,
       numTasksOver25ms: toplevelTasks.filter(t => t.duration > 25).length,
+      numTasksOver50ms: toplevelTasks.filter(t => t.duration > 50).length,
       numTasksOver100ms: toplevelTasks.filter(t => t.duration > 100).length,
       numTasksOver500ms: toplevelTasks.filter(t => t.duration > 500).length,
       rtt: analysis.rtt,

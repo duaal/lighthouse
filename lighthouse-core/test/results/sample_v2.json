@@ -804,6 +804,7 @@
             "numTasks": 107,
             "numTasksOver10ms": 7,
             "numTasksOver25ms": 5,
+            "numTasksOver50ms": 4,
             "numTasksOver100ms": 3,
             "numTasksOver500ms": 1,
             "rtt": 0.8639999999999999,
@@ -1070,7 +1071,7 @@
     },
     "network-server-latency": {
       "id": "network-server-latency",
-      "title": "Server Latencies",
+      "title": "Server Backend Latencies",
       "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
       "score": null,
       "scoreDisplayMode": "informative",

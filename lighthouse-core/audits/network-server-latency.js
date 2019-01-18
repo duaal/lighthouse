@@ -11,7 +11,7 @@ const NetworkAnalysisComputed = require('../computed/network-analysis.js');
 
 const UIStrings = {
   /** Descriptive title of a Lighthouse audit that tells the user the server latencies observed from each origin the page connected to. This is displayed in a list of audit titles that Lighthouse generates. */
-  title: 'Server Latencies',
+  title: 'Server Backend Latencies',
   /** Description of a Lighthouse audit that tells the user that server latency can effect their website's performance negatively. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Server latencies can impact web performance. ' +
     'If the server latency of an origin is high, it\'s an indication the server is overloaded ' +
@@ -48,7 +48,9 @@ class NetworkServerLatency extends Audit {
     /** @type {Array<{origin: string, serverReponseTime: number}>} */
     const results = [];
     for (const [origin, serverReponseTime] of analysis.serverResponseTimeByOrigin.entries()) {
-      if (origin.startsWith('__')) continue;
+      // Ignore entries that don't look like real origins, like the __SUMMARY__ entry.
+      if (!origin.startsWith('http')) continue;
+
       maxLatency = Math.max(serverReponseTime, maxLatency);
       results.push({origin, serverReponseTime});
     }

@@ -728,7 +728,7 @@
     "description": "Description of a Lighthouse audit that tells the user that server latency can effect their website's performance negatively. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation."
   },
   "lighthouse-core/audits/network-server-latency.js | title": {
-    "message": "Server Latencies",
+    "message": "Server Backend Latencies",
     "description": "Descriptive title of a Lighthouse audit that tells the user the server latencies observed from each origin the page connected to. This is displayed in a list of audit titles that Lighthouse generates."
   },
   "lighthouse-core/audits/redirects.js | description": {

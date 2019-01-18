@@ -436,6 +436,7 @@
                         "numTasksOver10ms": 7.0, 
                         "numTasksOver25ms": 5.0, 
                         "numTasksOver500ms": 1.0, 
+                        "numTasksOver50ms": 4.0, 
                         "rtt": 0.8639999999999999, 
                         "throughput": 1398339.461891128, 
                         "totalByteWeight": 160738.0, 
@@ -1947,7 +1948,7 @@
             "id": "network-server-latency", 
             "score": null, 
             "scoreDisplayMode": "informative", 
-            "title": "Server Latencies"
+            "title": "Server Backend Latencies"
         }, 
         "no-document-write": {
             "description": "For users on slow connections, external scripts dynamically injected via `document.write()` can delay page load by tens of seconds. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/document-write).", 
