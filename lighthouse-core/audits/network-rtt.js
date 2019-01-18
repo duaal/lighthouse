@@ -12,10 +12,10 @@ const NetworkAnalysisComputed = require('../computed/network-analysis.js');
 const UIStrings = {
   /** Descriptive title of a Lighthouse audit that tells the user the round trip times to each origin the page connected to. This is displayed in a list of audit titles that Lighthouse generates. */
   title: 'Network Round Trip Times',
-  /** ??? */
+  /** Description of a Lighthouse audit that tells the user that a high network round trip time (RTT) can effect their website's performance because the server is physically far away from them thus making the RTT high. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Network round trip times (RTT) have a large impact on performance. ' +
     'If the RTT to an origin is high, it\'s an indication that servers closer to the user could ' +
-    'improve performance.',
+    'improve performance. [Learn more](https://hpbn.co/primer-on-latency-and-bandwidth/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -68,7 +68,7 @@ class NetworkRTT extends Audit {
     const tableDetails = Audit.makeTableDetails(headings, results);
 
     return {
-      score: Math.max(1 - (maxRtt / 150), 0),
+      score: 1,
       rawValue: maxRtt,
       displayValue: str_(i18n.UIStrings.ms, {timeInMs: maxRtt}),
       details: tableDetails,
