@@ -340,14 +340,9 @@ class Driver {
    * @param {{useIsolation?: boolean}=} options
    * @return {Promise<*>}
    */
-  evaluateAsync(expression, options = {}) {
-    // tsc won't convert {Promise<number>|Promise<undefined>}, so cast manually.
-    // https://github.com/Microsoft/TypeScript/issues/7294
-    /** @type {Promise<number|undefined>} */
-    const contextIdPromise = options.useIsolation ?
-        this._getOrCreateIsolatedContextId() :
-        Promise.resolve(undefined);
-    return contextIdPromise.then(contextId => this._evaluateInContext(expression, contextId));
+  async evaluateAsync(expression, options = {}) {
+    const contextId = options.useIsolation ? await this._getOrCreateIsolatedContextId() : undefined;
+    return this._evaluateInContext(expression, contextId);
   }
 
   /**
@@ -403,19 +398,28 @@ class Driver {
   /**
    * @return {Promise<{url: string, data: string}|null>}
    */
-  getAppManifest() {
-    return this.sendCommand('Page.getAppManifest')
-      .then(response => {
-        // We're not reading `response.errors` however it may contain critical and noncritical
-        // errors from Blink's manifest parser:
-        //   https://chromedevtools.github.io/debugger-protocol-viewer/tot/Page/#type-AppManifestError
-        if (!response.data) {
-          // If the data is empty, the page had no manifest.
-          return null;
-        }
+  async getAppManifest() {
+    this.setNextProtocolTimeout(3000);
+    const response = await this.sendCommand('Page.getAppManifest');
+    let data = response.data;
 
-        return /** @type {Required<LH.Crdp.Page.GetAppManifestResponse>} */ (response);
-      });
+    // We're not reading `response.errors` however it may contain critical and noncritical
+    // errors from Blink's manifest parser:
+    //   https://chromedevtools.github.io/debugger-protocol-viewer/tot/Page/#type-AppManifestError
+    if (!data) {
+      // If the data is empty, the page had no manifest.
+      return null;
+    }
+
+    const BOM_LENGTH = 3;
+    const BOM_FIRSTCHAR = 65279;
+    const isBomEncoded = data.charCodeAt(0) === BOM_FIRSTCHAR;
+
+    if (isBomEncoded) {
+      data = Buffer.from(data).slice(BOM_LENGTH).toString();
+    }
+
+    return {...response, data};
   }
 
   /**
