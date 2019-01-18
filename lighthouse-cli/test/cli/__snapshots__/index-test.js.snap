@@ -97,6 +97,9 @@ Object {
       "path": "font-display",
     },
     Object {
+      "path": "diagnostics",
+    },
+    Object {
       "path": "network-requests",
     },
     Object {
@@ -796,6 +799,10 @@ Object {
         },
         Object {
           "id": "main-thread-tasks",
+          "weight": 0,
+        },
+        Object {
+          "id": "diagnostics",
           "weight": 0,
         },
         Object {
