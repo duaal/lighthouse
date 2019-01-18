@@ -804,12 +804,15 @@
             "numTasks": 107,
             "numTasksOver10ms": 7,
             "numTasksOver25ms": 5,
+            "numTasksOver100ms": 3,
+            "numTasksOver500ms": 1,
             "rtt": 0.8639999999999999,
             "throughput": 1398339.461891128,
             "maxRtt": 1.7249999999999943,
             "maxServerLatency": 572.829,
             "totalByteWeight": 160738,
-            "totalTaskTime": 1548.5690000000002
+            "totalTaskTime": 1548.5690000000002,
+            "mainDocumentTransferSize": 12640
           }
         ]
       }
@@ -1033,7 +1036,7 @@
     "network-rtt": {
       "id": "network-rtt",
       "title": "Network Round Trip Times",
-      "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance.",
+      "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more](https://hpbn.co/primer-on-latency-and-bandwidth/).",
       "score": null,
       "scoreDisplayMode": "informative",
       "rawValue": 1.7249999999999943,
@@ -1068,7 +1071,7 @@
     "network-server-latency": {
       "id": "network-server-latency",
       "title": "Server Latencies",
-      "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance.",
+      "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).",
       "score": null,
       "scoreDisplayMode": "informative",
       "rawValue": 572.829,

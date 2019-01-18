@@ -424,6 +424,7 @@
             "details": {
                 "items": [
                     {
+                        "mainDocumentTransferSize": 12640.0, 
                         "maxRtt": 1.7249999999999943, 
                         "maxServerLatency": 572.829, 
                         "numFonts": 0.0, 
@@ -431,8 +432,10 @@
                         "numScripts": 4.0, 
                         "numStylesheets": 7.0, 
                         "numTasks": 107.0, 
+                        "numTasksOver100ms": 3.0, 
                         "numTasksOver10ms": 7.0, 
                         "numTasksOver25ms": 5.0, 
+                        "numTasksOver500ms": 1.0, 
                         "rtt": 0.8639999999999999, 
                         "throughput": 1398339.461891128, 
                         "totalByteWeight": 160738.0, 
@@ -1879,7 +1882,7 @@
             "title": "Network Requests"
         }, 
         "network-rtt": {
-            "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance.", 
+            "description": "Network round trip times (RTT) have a large impact on performance. If the RTT to an origin is high, it's an indication that servers closer to the user could improve performance. [Learn more](https://hpbn.co/primer-on-latency-and-bandwidth/).", 
             "details": {
                 "headings": [
                     {
@@ -1913,7 +1916,7 @@
             "title": "Network Round Trip Times"
         }, 
         "network-server-latency": {
-            "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance.", 
+            "description": "Server latencies can impact web performance. If the server latency of an origin is high, it's an indication the server is overloaded or has poor backend performance. [Learn more](https://hpbn.co/primer-on-web-performance/#analyzing-the-resource-waterfall).", 
             "details": {
                 "headings": [
                     {
